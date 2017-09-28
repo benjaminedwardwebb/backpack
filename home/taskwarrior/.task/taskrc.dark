@@ -1,0 +1,2 @@
+include ~/.task/taskrc.common
+include ~/.task/solarized-dark-256.theme

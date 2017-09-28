@@ -1,0 +1,72 @@
+[theme]
+name = "solarized-light"
+[theme.overrides]
+idle_fg = "#657b83"
+separator = ""
+
+[icons]
+name = "material-nf"
+
+#[[block]]
+#block = "taskwarrior"
+#interval = 6
+#format = "{count} {filter_name} tasks"
+#format_singular = "{count} {filter_name} task"
+#format_everything_done = "0 {filter_name} tasks"
+#warning_threshold = 10
+#critical_threshold = 20
+#[[block.filters]]
+#name = "active"
+#filter = "+ACTIVE" #+PENDING +OVERDUE or +DUETODAY"
+#[[block.filters]]
+#name = "pending"
+#filter = "+PENDING"
+
+[[block]]
+block = "cpu"
+icons_format = " "
+format = "{barchart} {utilization}"
+interval = 1
+
+[[block]]
+block = "memory"
+display_type = "memory"
+clickable = true
+icons_format = " {icon}"
+format_mem = "{mem_used_percents} {mem_used}"
+format_swap = "{swap_used_percents} {swap_used}"
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+icons_format = "{icon}"
+format = "{icon} {available}"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+# TODO i3: I may need to build spotifyd with MPRIS support, perhaps via a nix overlay. Not sure if it's feature flagged in the default build. Can't seem to find it in the MPRIS stuff, but I don't really understand that.
+#[[block]]
+#block = "music"
+#player = "spotifyd"
+#format = "{avail}"
+
+[[block]]
+block = "uptime"
+icons_format = " "
+
+#[[block]]
+#block = "battery"
+#driver = "upower"
+#device = "DisplayDevice"
+#icons_format = " {icon} "
+#format = "{percentage}"
+
+[[block]]
+block = "time"
+icons_format = " "
+interval = 5
+format = "%a/%U %H:%M %Y-%m-%d"

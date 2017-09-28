@@ -1,0 +1,10 @@
+# i3/launcher
+# i3 configuration file that manages the program launcher.
+#
+# I use dmenu, the i3 default.
+#
+# vim: filetype=i3config
+
+# Start dmenu (a program launcher) using the modifier key and a forward slash,
+# like searching in vim. Style parameters for font and color are passed.
+bindsym $mod+slash exec dmenu_run -p "=>" -l 15 -fn 'FiraCode-13' -nb $background -nf $foreground -sb $emphasizedBackground -sf $accentColor

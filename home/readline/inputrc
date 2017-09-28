@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# .inputrc
+# https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File-Syntax.html
+
+# settings
+set editing-mode vi
+set keymap vi-command
+
+# toggles cursor according to mode: | (insert), █ (command)
+set show-mode-in-prompt on
+set vi-cmd-mode-string "\1\e[2 q\2"
+set vi-ins-mode-string "\1\e[6 q\2"
+
+# reduce delay between pressing escape and the cursor toggle
+set keyseq-timeout 0
+
+# don't duplicate already typed characters ahead of the cursor when completing
+set skip-completed-text on
+
+# show completions as if running `ls`
+set colored-stats on
+set mark-directories on
+set match-hidden-files off
+set print-completions-horizontally off
+
+set show-all-if-ambiguous on
+set bell-style audible
+
+# key bindings
+
+# references
+# https://www.reddit.com/r/vim/comments/dcrf5f/vim_keybinds_in_the_python_repl_and_other/
+# https://sanctum.geek.nz/arabesque/lazier-tab-completion/
+# https://github.com/tylucaskelley/dotfiles/blob/master/src/.inputrc

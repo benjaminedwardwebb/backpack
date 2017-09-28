@@ -1,0 +1,20 @@
+# git ignore
+# This is my global git ignore configuration.
+*.swp
+.bsp
+
+# I use nix and direnv to manage project-specific development environments. This usually
+# involves adding `shell.nix` and `.envrc` files to a project. I ignore these
+# files by default, since often I will be the only person to use these files
+# for given project. However, they can be manually checked into a repository
+# with the following command.
+#
+# 	git add --force shell.nix .envrc
+#
+# See: https://nixos.wiki/wiki/Development_environment_with_nix-shell
+# See: man git add
+shell.nix
+.envrc
+.direnv/
+
+__pycache__/

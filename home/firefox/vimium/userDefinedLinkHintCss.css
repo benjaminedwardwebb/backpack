@@ -1,0 +1,123 @@
+/* userDefinedLinkHintCss.css
+ * Custom CSS for vimium elements. */
+/* TODO vimium: My custom CSS should switch colors based on system color theme. */
+
+/* linkhint boxes */
+div > .vimiumHintMarker {
+	background: none;
+	background-color: #268bd2;
+	box-shadow: none;
+	border: none;
+	border-radius: 3px;
+}
+
+/* linkhint text */
+div > .vimiumHintMarker span {
+	color: #073642;
+	font-family: 'Fira Code', monospace;
+	font-weight: bold;
+	font-size: 12px;
+	text-shadow: none;
+}
+
+div > .vimiumHintMarker > .matchingCharacter {
+}
+
+/* ################# */
+
+/* input text-input back*/
+input#vomnibarInput.vimiumReset {
+	background-color: #073642;
+	color: #93a1a1;
+}
+
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
+#vomnibar {
+	background-color: #002b36;
+	border-color: #002b36;
+	box-shadow: none;
+}
+
+#vomnibar ::selection {
+	background-color: #cb4b16;
+	color: #eee8d5;
+}
+
+/* input frame */
+#vomnibar .vomnibarSearchArea {
+	background-color: #002b36;
+	border-bottom: #3f3f3f;
+	white-space: nowrap; /* Aligns the ::before colon and input. */
+	font-size: 0px; /* Removes whitespace between ::before colon and input. */
+}
+
+#vomnibar .vomnibarSearchArea::before {
+	color: #586e75;
+	font-family: 'Fira Code', monospace;
+	font-size: 20px;
+	font-weight: normal;
+	content: ":";
+	/* The following match the styling of #vomnibar input. */
+	box-sizing: border-box;
+	display: inline-block;
+}
+
+/* input border */
+#vomnibar input {
+	width: calc(100% - 12px); /* Shaves off extra length of ::before colon. */
+	background-color: #002b36;
+	border-color: #002b36;
+	box-shadow: none;
+	color: #839496;
+	font-family: 'Fira Code', monospace;
+	font-size: 20px; /* Default from vimium made explicit here. */
+	display: inline-block;
+	padding-left: 0px; /* Defaults to 4px; shifts closer to colon. */
+	border-left: 0px; /* Defaults to 1px; shifts closer to colon. */
+}
+
+/* results background */
+#vomnibar ul {
+	background-color: #002b36;
+}
+
+#vomnibar li {
+	border-bottom: #3f3f3f;
+}
+
+/* Second line URL */
+#vomnibar li .vomnibarUrl {
+	color: #268bd2;
+	font-family: 'Fira Code', monospace;
+}
+
+/* Second line URL-Match */
+#vomnibar li .vomnibarMatch {
+	color: #b58900;
+	font-weight: normal;
+	font-family: 'Fira Code', monospace;
+}
+
+/* Selected */
+#vomnibar li.vomnibarSelected {
+	background-color: #073642;
+}
+
+/* Title-Match */
+#vomnibar li em .vomnibarMatch, #vomnibar li .vomnibarTitle .vomnibarMatch {
+	color: #b58900;
+	font-weight: normal;
+	font-family: 'Fira Code', monospace;
+}
+
+/* Title */
+#vomnibar li em, #vomnibar li .vomnibarTitle {
+	color: #839496;
+	font-family: 'Fira Code', monospace;
+}
+
+#vomnibar li .vomnibarSource {
+	color: #586e75;
+	font-family: 'Fira Code', monospace;
+}

@@ -1,0 +1,21 @@
+# i3/start
+# i3 configuration file that manages startup settings.
+#
+# vim: filetype=i3config
+
+exec --no-startup-id feh --bg-scale ~/.config/i3/cubes-solarized-dark.png
+
+assign [class="music"] workspace $music
+assign [class="news"] workspace $news
+assign [class="email"] workspace $email
+assign [class="Slack"] workspace $chat
+assign [class="firefox"] workspace $browser
+assign [class="initial-terminal"] workspace $terminal
+exec music
+exec news
+exec email
+exec slack
+exec firefox
+exec "wezterm start --class 'initial-terminal'"
+
+# consider displaying firefox tabs in status line with https://superuser.com/a/1687332

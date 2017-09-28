@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# install
+# Installs my backpack configuration to the host system.
+function main {
+	local -r warnings="
+Installing backpack ...
+
+	Note the current system and environment.
+
+	uname -a
+	$(uname -a)
+
+	HOSTNAME=$HOSTNAME
+	USER=$USER
+	HOME=$HOME
+
+	pwd
+	$(pwd)
+
+	The following assumptions MUST be met for a successful installation.
+
+	The backpack git repository MUST exist at $HOME/backpack.
+
+"
+	echo "$warnings"
+
+	read -p "Continue? [Y/n] "
+	echo ""
+
+	case ${REPLY:-y} in
+		[Yy]*) install::run || install::abort ;;
+		*) install::abort ;;
+	esac
+
+	return 0
+}
+
+# Installs my backpack's configuration by symlinking the entire repository into
+# place at the path /etc/nixos, the default path for a NixOS system's
+# configuration. Overwrites the existing NixOS configuration at /etc/nixos,
+# moving the prior configuration to /tmp/nixos.
+# TODO install: This should add the moved configuration for a new host into the git repository if it is, in fact, a brand new host. That way I can pick up all the configuration from the NixOS install process.
+install::run() {
+	install::setup_home_manager || return 1
+	echo ""
+	sudo mv --force /etc/nixos /tmp/nixos || return 1
+	echo "	Moved /etc/nixos to /tmp/nixos."
+	echo ""
+	sudo ln --symbolic --force --no-target-directory "$HOME/backpack" /etc/nixos || return 1
+	echo "	Rebuilding system with nixos-rebuild switch ..."
+	echo ""
+	$HOME/backpack/switch || return 1
+	return 0
+}
+
+# Sets up home-manager by adding its channel to nix. The actual installation of
+# my home-manager configuration is done together with my NixOS configuration,
+# since it's managed as just another NixOS module.
+# See: https://nix-community.github.io/home-manager/index.html#sec-install-nixos-module
+install::setup_home_manager() {
+	sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz home-manager || return 1
+	sudo nix-channel --update || return 1
+	return 0
+}
+
+# Aborts the installation.
+function install::abort {
+	echo "ABORTED BACKPACK INSTALL"
+	return 1
+}
+
+main $@

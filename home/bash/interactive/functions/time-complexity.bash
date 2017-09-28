@@ -1,0 +1,35 @@
+function time-complexity {
+	b="\u2082"
+	e1="\u00b9"
+	e2="\u00b2"
+	e3="\u00b3"
+	e4="\u2074"
+	e5="\u2075"
+	e6="\u2076"
+	e7="\u2077"
+	e8="\u2078"
+	e9="\u2079"
+	n="\u207f"
+	m="\u207b"
+	x="\u00d7"
+	s="\u221a"
+	c="\u221b"
+	G="\u0393"
+
+	printf "\n f(n)   | t                | 1 sec | 1 min | 1 h   | 1 day | 1 y   "
+	printf "\n ------------------------------------------------------------------"
+	printf "\n c      | c                |       |       |       |       |"
+	printf "\n log${b}n  | 2^t              |       |       |       |       |"
+	printf "\n ${s}n     | t$e2               | 10$e1$e2  |       |       |       |"
+	printf "\n n      | t                | 10$e6   | 6${x}10$e7 | 4${x}10$e9 |       |       "
+	printf "\n nlog${b}n | ln2^t / W(ln2^t) | 62746 | 3${x}10$e5 | 10$e8   | 2${x}10$e9 |"
+	printf "\n n$e2     | ${s}t               | 1000  | 7745  | 60000 | 3${x}10$e5 | 6${x}10$e6"
+	printf "\n n$e3     | ${c}t               | 100   | 391   | 1532  | 4420  | 31593 "
+	printf "\n 2$n     | log${b}t            | 19    | 25    | 31    | 36    | 44"
+	printf "\n n!     | $G$m$e1(t)           | 9     | 11    | 12    | 13    | 16"
+
+	printf "\n"
+	printf "\n"
+
+	return 0
+}

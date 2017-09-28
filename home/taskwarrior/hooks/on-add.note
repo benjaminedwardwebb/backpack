@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+# on-add.note
+# Python hook to create a directory for notes associated with each task.
+
+from pathlib import Path
+import json
+import os
+import sys
+
+
+def main() -> None:
+    task: dict = get_task()
+
+    if "project" in task:
+        project = Path(task["project"])
+        note_directory = get_note_directory_from_environment()
+        path = note_directory.joinpath(project)
+        try:
+            make_directory(path)
+        except FileExistsError:
+            pass
+        except Exception as e:
+            raise e
+    else:
+        pass
+
+    print_task_json(task)
+
+    return
+
+
+def get_task() -> dict:
+    x = sys.stdin.readline()
+    dict = json.loads(x)
+    return dict
+
+
+def make_directory(path: Path) -> None:
+    access_rights = 0o755
+    os.mkdir(path, access_rights)
+    return
+
+
+def get_note_directory_from_environment() -> Path:
+    def get_home() -> str:
+        home = os.environ.get("HOME")
+        return home
+    def get_default_note() -> str:
+        home = get_home()
+        default_note = f"{home}/note"
+        return default_note
+    string = os.getenv("NOTE", get_default_note())
+    path = Path(string)
+    return path
+
+
+def print_task_json(task) -> None:
+    string = json.dumps(task)
+    print(string)
+    return
+
+
+if __name__ == "__main__":
+    main()

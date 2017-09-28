@@ -1,0 +1,42 @@
+# i3/bar
+# i3 configuration file that manages the i3bar settings.
+#
+# vim: filetype=i3config
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available).
+bar {
+	mode hide
+
+	position top
+
+	# Disable system tray icons. I don't tend to find them that useful.
+	# See: https://i3wm.org/docs/userguide.html#_tray_output
+	tray_output none
+
+	status_command i3status-rs ~/.config/i3status-rust/config-top.toml
+
+	font pango:FiraCode Nerd Font Mono, monospace 16
+
+	workspace_buttons yes
+	strip_workspace_numbers yes
+	strip_workspace_name no
+
+	colors {
+		# Different commands have different numbers of arguments.
+		#
+		# Generally, when a command was 3 color arguments, they are in the
+		# following order:
+		# <command> <border> <background> <text>
+		#
+		# See: https://i3wm.org/docs/userguide.html#_colors
+		background				$background
+
+		focused_workspace		$emphasizedBackground $emphasizedBackground $accentColor
+		#active_workspace		#fdf6e3 #6c71c4 #fdf6e3 # Only applies to multi-monitor
+		inactive_workspace		$background $background $foreground
+		urgent_workspace		$majorColor $majorColor $emphasizedBackground
+		#binding_mode			#2f343a #900000 #ffffff 
+
+	}
+}

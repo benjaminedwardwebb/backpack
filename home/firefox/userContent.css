@@ -1,0 +1,287 @@
+/* userContent.css
+ * This is my userContent CSS file. It applies custom CSS to certain websites.
+ *
+ * It's IMPOSSIBLE to style every websites according to my system's color
+ * theme using custom CSS like this (in a way that doesn't potentially break
+ * the legibility of many sites out there).
+ *
+ * It's also SAD to override each site's stylistic and design choices with
+ * your own. For example, consider someone's personal blog that they are
+ * presenting to you and have styled in the way they'd like it to be presented
+ * to the world.
+ *
+ * I've chosen a few websites that I use often and have added CSS here that
+ * makes them conform with my system's theme. For now, it's hard-coded with
+ * the solarized theme, with light and dark modes that will trigger based on
+ * the system's mode, using firefox's hook for this.
+ */
+
+/* Set global variables. */
+:root {
+	--link-color: 						#268bd2;
+	--visited-color: 					#6c71c4;
+	--selection-background-color: 		#cb4b16;
+	--code-color: 						#2aa198;
+
+	--blue: 							#268bd2;
+	--cyan: 							#2aa198;
+	--green: 							#859900;
+	--yellow: 							#b58900;
+	--orange: 							#cb4b16;
+	--red: 								#dc322f;
+	--magenta: 							#d33682;
+	--violet: 							#6c71c4;
+}
+
+/* Set variables when the dark color scheme is active. */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: 				#002b36;
+		--highlight-color: 					#073642;
+		--accent-color: 					#b58900;
+		--primary-content-color: 			#839496;
+		--secondary-content-color: 			#586e75;
+		--emphasized-content-color: 		#93a1a1;
+		--selection-content-color: 			#eee8d5;
+	}
+}
+
+/* Set variables when the light color scheme is active. */
+@media (prefers-color-scheme: light) { 
+	:root {
+		--background-color: 				#fdf6e3;
+		--highlight-color: 					#eee8d5;
+		--accent-color: 					#859900;
+		--primary-content-color: 			#657b83;
+		--secondary-content-color: 			#93a1a1;
+		--emphasized-content-color: 		#586e75;
+		--selection-content-color: 			#073642;
+	}
+}
+
+/* Apply custom CSS to the following websites. */
+@-moz-document 
+	domain(duckduckgo.com),
+	domain(wikipedia.org),
+	domain(github.com),
+	domain(gitlab.com) {
+
+	/* Use Fira Code font everywhere. */
+	@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+	* {
+		font-family: 'Fira Code', monospace !important;
+		/* Enable non-default Fira Code stylistic sets and character variants.
+		 *
+		 * These are mostly just personal preference. The slightly thinner percent
+		 * sign (%) does help the URL in the urlbar fit better, however.
+		 *
+		 * cv18: ligature for a thinner percent sign with filled dots (%)
+		 * cv28: ligatures for curly parentheses with dots ({., .})
+		 * ss07: ligatures for similar to (=~) and not similar to (!~)
+		 * ss09: ligatures for haskell-like operators (>>=, <<=, ||=, |=)
+		 * ss10: connective ligatures for certain letter pairs (Fl, Tl, fi, fj, fl, ft)
+		 */
+		font-feature-settings: 'cv18', 'cv28', 'ss07', 'ss09', 'ss10';
+	}
+
+	/* Set background and foreground coloring for most HTML elements. */
+	/* TODO firefox: My userContent.css could be a little more systematic. The following seems to work to my liking for the sites I tested against. */
+	a,a span {
+		background-color: var(--background-color) !important;
+	}
+	header,h1,h2,h3,h4,h5,h6,body,p,div,nav,ul,li,mark,label,summary,section,main,details-menu,table,th,td,svg,img,button,article {
+		background: var(--background-color) !important;
+		background-color: var(--background-color) !important;
+		border-color: var(--highlight-color) !important;
+	}
+	body,p,div,nav,ul,li,mark,label,summary,section,main,details-menu,table,th,td,svg,img,button,article {
+		color: var(--primary-content-color) !important;
+	}
+	header,h1,h2,h3,h4,h5,h6 {
+		color: var(--emphasized-content-color) !important;
+	}
+	form,input {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+		border-color: var(--highlight-color) !important;
+	}
+	input::placeholder {
+		color: var(--secondary-content-color) !important;
+	}
+	code,code span,pre {
+		color: var(--code-color) !important;
+		background-color: var(--highlight-color) !important;
+		border-color: var(--highlight-color) !important;
+	}
+
+	/* Set background and foreground coloring for selections and
+	 * psuedo-elements.
+	 */
+	/* TODO firefox: Hovering is not handled exactly as I want in userContent.css. */
+	::selection {
+		color: var(--selection-content-color) !important;
+		background-color: var(--selection-background-color) !important;
+	}
+	:link {
+		color: var(--link-color) !important;
+	}
+	:visited {
+		color: var(--visited-color) !important;
+	}
+	:active {
+		color: var(--accent-color) !important;
+	}
+	:focus,:focus-visible {
+		color: var(--accent-color) !important;
+	}
+	a :hover {
+		color: var(--accent-color) !important;
+	}
+	a[href] :hover {
+		color: var(--accent-color) !important;
+	}
+	a span :hover {
+		color: var(--accent-color) !important;
+	}
+
+	/** TODO firefox: userContent: Right now my userContent overrides my vimium CSS so I have to re-specify it here. */
+	div .vimiumReset {
+		background-color: var(--blue) !important;
+	}
+	span .vimiumReset {
+		color: var(--background-color);
+	}
+}
+
+/* Custom CSS applied to duckduckgo.com domain sites. */
+@-moz-document domain(duckduckgo.com) {
+	/* Removes a strange black gradient on the edges of a dive below the
+	 * duckduckgo search bar and above the search results.
+	 */
+	div ::before, div ::after {
+		background-image: var(--background-color) !important;
+	}
+
+	/* Apply standard text coloring to the short, small URLs (or pieces of
+	 * URLs) that are listed above each search result.
+	 */
+	a[data-testid="result-extras-url-link"] span {
+		color: var(--primary-content-color) !important;
+	}
+}
+
+/* Custom CSS applied to wikipedia.org domain sites. */
+@-moz-document domain(wikipedia.org) {
+	/* Applies standard text coloring to the numbers in the table of contents
+	 * on a page.
+	 */
+	a span.tocnumber {
+		color: var(--primary-content-color) !important;
+	}
+
+	/* Applies standard text coloring to bullet (<li>) markers. */
+	/* TODO firefox: I'm not sure if the userContent.css wikipedia.org ::marker CSS to text color bullets actually works. */
+	::marker {
+		color: var(--primary-content-color) !important;
+	}
+
+	/* Wikipedia pages with code snippets will syntax highlight the code,
+	 * which is rendered on the page as CSS. The following CSS overrides the
+	 * colors for some of the classes used by wikipedia's CSS to match my
+	 * color scheme, so that code syntax highlighting on wikipedia pages will
+	 * stay on theme.
+	 *
+	 * This is admittedly a bit crazy. I surely have not covered every class
+	 * that wikipedia uses for code syntax highlighting. They may also be used
+	 * to color different kinds of elements on different kinds of wikipedia
+	 * pages.
+	 */
+	span.n {
+		color: var(--primary-content-color) !important;
+	}
+	span.na {
+		color: var(--green) !important;
+	}
+	span.nb {
+		color: var(--red) !important;
+	}
+	span.nc {
+		color: var(--blue) !important;
+	}
+	span.nd {
+		color: var(--orange) !important;
+	}
+	span.nn {
+		color: var(--green) !important;
+	}
+	span.nt {
+		color: var(--green) !important;
+	}
+	span.nf {
+		color: var(--blue) !important;
+	}
+	span.k {
+		color: var(--yellow) !important;
+	}
+	span.kc {
+		color: var(--cyan) !important;
+	}
+	span.kr {
+		color: var(--cyan) !important;
+	}
+	span.kt {
+		color: var(--yellow) !important;
+	}
+	span.o {
+		color: var(--primary-content-color) !important;
+	}
+	span.ow {
+		color: var(--green) !important;
+	}
+	span.p {
+		color: var(--primary-content-color) !important;
+	}
+	span.s {
+		color: var(--cyan) !important;
+	}
+	span.c1 {
+		color: var(--secondary-content-color) !important;
+	}
+	span.cp {
+		color: var(--secondary-content-color) !important;
+	}
+	span.sx {
+		color: var(--cyan) !important;
+	}
+	span.s1 {
+		color: var(--cyan) !important;
+	}
+	span.mi {
+		color: var(--cyan) !important;
+	}
+	span.mh {
+		color: var(--primary-content-color) !important;
+	}
+}
+
+/* Custom CSS applied to github.com domain sites. */
+@-moz-document domain(github.com) {
+	/* Differentiate different UI elements with highlighting. */
+	.blob-num {
+		background-color: var(--highlight-color) !important;
+	}
+
+	/* Align PR status check donut chart colors with the color scheme. */
+	.donut-chart > .success {
+		fill: var(--green) !important;
+	}
+	.donut-chart > .failure, .donut-chart > .error {
+		fill: var(--red) !important;
+	}
+	.donut-chart > .expected, .donut-chart > .inprogress {
+		fill: var(--yellow) !important;
+	}
+	.donut-chart > .neutral {
+		fill: var(--secondary-content-color) !important;
+	}
+}

@@ -1,0 +1,35 @@
+# i3/theme.light
+# Defines variables for the solarized theme with light variant.
+#
+# vim: filetype=i3config
+
+# Sets solarized color variables.
+#
+# These are set here as global variables because they are used in multiple
+# other files (e.g., both style and bar).
+#
+# See: https://ethanschoonover.com/solarized/
+set $background 					"#fdf6e3"
+set $alertColor 					"#dc322f"
+set $inverseAccentColor 			"#b58900"
+set $accentColor 					"#859900"
+set $hyperColor 					"#268bd2"
+set $majorColor 					"#6c71c4"
+set $superColor 					"#2aa198"
+set $inverseEmphasizedBackground 	"#073642"
+set $emphasizedBackground 			"#eee8d5"
+set $attentionColor 				"#cb4b16"
+set $deemphasizedForeground 		"#93a1a1"
+set $inverseForeground 				"#839496"
+set $foreground 					"#657b83"
+set $minorColor 					"#d33682"
+set $emphasizedForeground 			"#586e75"
+set $inverseBackground 				"#002b36"
+
+# Include additional configuration files.
+#include style
+#include workspace
+#include window
+#include launcher
+#include bar
+#include start

@@ -1,0 +1,97 @@
+# i3/config
+# This is my i3 configuration.
+#
+# It's structured into the following files.
+#
+#   - config
+# 	- theme(.variant)
+#   - style
+#   - workspace
+#   - window
+#   - launcher
+#   - bar
+#   - start
+#
+# The order is important and is the order in which the files should be loaded
+# by nix.
+#
+# Global variables are defined in this top-level config file, with the
+# exception of theme color variables which are defined in the theme file. This
+# is so that these color variables can be defined globally, for all subsequent
+# files, but still be isolated from other configuration so that the theme file
+# can be changed and the theme update without affecting any other
+# configuration. After the theme file other configuration files that deal with
+# more specific components of the i3 window manager, like workspaces, the bar,
+# or which applications to launch on start, are loaded.
+#
+# See: https://i3wm.org/docs/userguide.html
+
+# The following line forces the new v4 configuration format to be used.
+# i3 config file (v4)
+
+# Set the modifier key to Mod4.
+#
+# Mod4 is the Super (Windows) key on Berrio (a Dell Precision 5510).
+#
+# See: xmodmap
+# See: sudo dmidecode | page -c /Precision
+set $mod Mod4
+
+# Reload this configuration file.
+bindsym $mod+shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3).
+bindsym $mod+shift+r restart
+
+# Exit i3 (logs you out of your X session).
+bindsym $mod+shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Define names for default workspaces for which we configure key bindings
+# later on.
+#
+# These are set here as global variables because they are used in multiple
+# other files (e.g., both workspaces.conf and start.conf).
+#
+# Multiple variables are defines to reference the same workspace, so that we
+# can reference a workspace either by its function or its number in other
+# configuration. The mapping between function and number is defined once here.
+# The names used for the two variables referencing the same workspace must
+# match exactly.
+set $music "1:  "
+#set $news "2:  "
+set $news "2:  "
+set $email "3:  "
+set $chat "4:  "
+set $browser "5:  "
+set $terminal "6:   𝝺  "
+
+set $ws1 "1:  "
+#set $ws2 "2:  "
+set $ws2 "2:  "
+set $ws3 "3:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:   𝝺  "
+set $ws7 "7:   𝝺  "
+set $ws8 "8:   𝝺  "
+set $ws9 "9:   𝝺  "
+set $ws10 "10:   𝝺  "
+
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status

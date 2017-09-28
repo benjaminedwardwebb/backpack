@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import sys
+import json
+import os
+import errno
+
+task = json.loads(sys.stdin.readline())
+print('this hook was fired!')
+print('json: ' + json.dumps(task))
+print('')
+sys.exit(0)
