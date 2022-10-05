@@ -1,5 +1,4 @@
 local wezterm = require "wezterm"
---local act = wezterm.action
 
 color = {
 	foreground = "#657b83",
@@ -20,13 +19,38 @@ color = {
 	inverseAccent = "#b58900",
 }
 
+-- Run a shell command and capture its stdout.
+-- See: https://stackoverflow.com/a/326715
+function os.capture(cmd, raw)
+  local f = assert(io.popen(cmd, 'r'))
+  local s = assert(f:read('*a'))
+  f:close()
+  if raw then return s end
+  s = string.gsub(s, '^%s+', '')
+  s = string.gsub(s, '%s+$', '')
+  s = string.gsub(s, '[\n\r]+', ' ')
+  return s
+end
+
+-- Tune the font size for each host.
+--
+-- For vm-lamu, I double the default font size (12) due to DPI-related scaling
+-- issues.
+function get_font_size_by_host()
+	local host = os.capture("hostname", false)
+	if host == "berrio" then return 18
+	elseif host == "vm-lamu" then return 24
+	else return 12
+	end
+end
+
 return {
+	window_decorations = "NONE",
 	enable_tab_bar = false,
 	font = wezterm.font("Fira Code"),
 	bold_brightens_ansi_colors = false,
 
-	-- Double the default font size (12) due to DPI-related scaling issues.
-	font_size = 24,
+	font_size = get_font_size_by_host(),
 
 	-- DPI is being set to 96 on resize events. You can see this when running
 	--
@@ -41,13 +65,6 @@ return {
 
 	enable_wayland = false,
 	adjust_window_size_when_changing_font_size = false,
-
-	--[[
-	   [keys = {
-	   [    -- paste from the clipboard
-	   [    { key = "v", mods = "CTRL", action = act.Paste },
-	   [},
-	   ]]
 
 	colors = {
 		foreground = color.foreground,

@@ -1,7 +1,9 @@
 # configuration.nix
-# A facade that loads the real configuration.nix file in the hosts directory.
-# TODO hosts: I haven't come up with a good mechanism to load the right file dynamically based on the host. Probably an argument to the install script that simply generates this file.
+# A facade configuration file that loads the real one in the hosts directory.
+#
+# This relies on /etc/hostname.
 let
-  hostname = "vm-lamu";
+  hostname = with builtins;
+    replaceStrings ["\n"] [""] (readFile /etc/hostname);
 in
 import ./hosts/${hostname}/configuration.nix
