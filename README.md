@@ -21,12 +21,11 @@ tree --noreport -L 1
 ```
 ```
 .
-├── bootstrap           bootstrap executable (run this to setup new hosts)
+├── bootstrap           bootstrap executable (to setup new hosts)
 ├── configuration.nix   facade configuration.nix that loads those in hosts/
 ├── docs                repository documentation
 ├── home                Home Manager configuration for the user environment
 ├── hosts               NixOS configurations for host system environments
-├── install             install executable
 ├── lib                 library of re-usable nix code
 ├── README.md           repository's README
 ├── scripts             utility scripts and executables
@@ -35,23 +34,19 @@ tree --noreport -L 1
 
 ## install
 
-This configuration is installed on a new NixOS host by running the `install`
-executable.
-
-```bash
-./install
-```
-
-This executable moves any existing NixOS configuration out of the way and symlinks this repository in its place at `/etc/nixos`. It then rebuilds the system.
-
-However, this `install` executable is an implicit step when setting up a new host. Explicit steps include:
+Setup a new NixOS host with the following steps.
 
   - install NixOS
-  - run the [`bootstrap`][4] executable and follow it's instructions
+  - configure the hostname (ensure it is correctly set in `/etc/hostname`)
+  - transmit secrets to the host, including an SSH key registered with GitHub
+  - obtain and run the [`bootstrap` executable][4] and follow its instructions
+    - `nix-shell -p wget --run 'wget -O bootstrap "https://tinyurl.com/backpack-bootstrap"'`
+    - `chmod +x bootstrap`
+    - `./bootstrap`
+  - edit `/etc/nixos/hosts/$HOSTNAME/configuration.nix` and then commit it
+    - `chown -R $USER:$(groups | cut -d " " -f 1) /etc/nixos`
 
-The `bootstrap` executable calls this repository's `install`.
-
-[4]: https://github.com/benjaminedwardwebb/benjaminedwardwebb/blob/main/bootstrap
+[4]: https://tinyurl.com/backpack-bootstrap
 
 ## history
 

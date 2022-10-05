@@ -1,0 +1,44 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash --package git
+# bootstrap
+# An executable to bootstrap my configuration on fresh NixOS hosts.
+#
+# Download and install with
+#
+#   wget -O bootstrap "https://tinyurl.com/backpack-bootstrap"
+#   chmod +x bootstrap
+#   ./bootstrap
+#
+# See the benjaminedwardwebb/backpack git repository README for more details.
+main() {
+	bootstrap::instructions || return 1
+	bootstrap::install || return 1
+	return 0
+}
+
+bootstrap::instructions() {
+	return 0
+}
+
+bootstrap::install() {
+	echo "Installing benjaminedwardwebb/backpack to /etc/nixos ..."
+	local -r backpack_url="git@github.com:benjaminedwardwebb/backpack"
+	local -r nixos_channel="https://nixos.org/channels/nixos-unstable"
+	local -r home_manager_channel="https://github.com/nix-community/home-manager/archive/master.tar.gz"
+	local -r hostname="$(hostname)" || return 1
+	sudo mv --force /etc/nixos /tmp/nixos || return 1
+	sudo git clone "$backpack_url" /etc/nixos || return 1
+	sudo mv --force /tmp/nixos "/etc/nixos/hosts/$hostname" || return 1
+	sudo nix-channel --add "$nixos_channel" nixos || return 1
+	sudo nix-channel --add "$home_manager_channel" home-manager || return 1
+	sudo nix-channel --update || return 1
+	sudo nixos-rebuild switch || return 1
+	echo "Install complete."
+	return 0
+}
+
+main $@ || exit 1
+
+echo ""
+read -p "Bootstrap complete. Reboot? [Enter]"
+reboot
