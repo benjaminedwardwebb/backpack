@@ -32,6 +32,7 @@ in
     ./es
     ./firefox
     ./git
+    ./gpg
     ./i3
     ./i3status-rust
     ./info
@@ -52,6 +53,10 @@ in
     pkgs.dmenu
     pkgs.fira-code
     pkgs.nerdfonts
+
+    # security
+    pkgs.gnupg
+    pkgs.pass
 
     # applications
     pkgs.browserpass
@@ -92,7 +97,6 @@ in
     pkgs.nailgun
     pkgs.onefetch
     pkgs.pandoc
-    pkgs.pass
     #pkgs.polipo # TODO nixpkgs: insecure package.
     pkgs.pre-commit
     pkgs.procs

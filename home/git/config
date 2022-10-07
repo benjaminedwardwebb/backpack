@@ -1,3 +1,9 @@
 [user]
 	email = benjaminedwardwebb@gmail.com
 	name = Benjamin Edward Webb
+	# THIS IS AN OPENPGP KEY ID. IT IS NOT SECRET.
+	# See: https://superuser.com/a/769488
+	signingkey = 72EABF75C331CD25
+
+[commit]
+	gpgsign = true
