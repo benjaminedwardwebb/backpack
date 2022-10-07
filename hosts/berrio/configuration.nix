@@ -62,6 +62,9 @@
     wget
   ];
 
+  services.openssh.enable = false;
+  security.sudo.execWheelOnly = true;
+  security.sudo.extraConfig = "Defaults  timestamp_timeout=720"; # minutes
   users.mutableUsers = false;
   users.users.benjaminedwardwebb = {
     isNormalUser = true;
