@@ -57,6 +57,7 @@ in
     # security
     pkgs.gnupg
     pkgs.pass
+    pkgs.pinentry-gtk2
 
     # applications
     pkgs.browserpass
