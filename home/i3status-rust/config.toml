@@ -1,26 +1,12 @@
 [theme]
 name = "solarized-light"
+
 [theme.overrides]
 idle_fg = "#657b83"
 separator = ""
 
 [icons]
 name = "material-nf"
-
-#[[block]]
-#block = "taskwarrior"
-#interval = 6
-#format = "{count} {filter_name} tasks"
-#format_singular = "{count} {filter_name} task"
-#format_everything_done = "0 {filter_name} tasks"
-#warning_threshold = 10
-#critical_threshold = 20
-#[[block.filters]]
-#name = "active"
-#filter = "+ACTIVE" #+PENDING +OVERDUE or +DUETODAY"
-#[[block.filters]]
-#name = "pending"
-#filter = "+PENDING"
 
 [[block]]
 block = "cpu"
@@ -48,22 +34,16 @@ interval = 20
 warning = 20.0
 alert = 10.0
 
-# TODO i3: I may need to build spotifyd with MPRIS support, perhaps via a nix overlay. Not sure if it's feature flagged in the default build. Can't seem to find it in the MPRIS stuff, but I don't really understand that.
-#[[block]]
-#block = "music"
-#player = "spotifyd"
-#format = "{avail}"
-
 [[block]]
 block = "uptime"
 icons_format = " "
 
-#[[block]]
-#block = "battery"
-#driver = "upower"
-#device = "DisplayDevice"
-#icons_format = " {icon} "
-#format = "{percentage}"
+[[block]]
+block = "battery"
+driver = "sysfs"
+device = "BAT0"
+icons_format = " {icon} "
+format = "{percentage}"
 
 [[block]]
 block = "time"

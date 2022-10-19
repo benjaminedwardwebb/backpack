@@ -58,7 +58,6 @@ bindsym $mod+shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # The names used for the two variables referencing the same workspace must
 # match exactly.
 set $music "1:  "
-#set $news "2:  "
 set $news "2:  "
 set $email "3:  "
 set $chat "4:  "
@@ -66,7 +65,6 @@ set $browser "5:  "
 set $terminal "6:   𝝺  "
 
 set $ws1 "1:  "
-#set $ws2 "2:  "
 set $ws2 "2:  "
 set $ws3 "3:  "
 set $ws4 "4:  "

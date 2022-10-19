@@ -25,11 +25,3 @@ set $foreground 					"#657b83"
 set $minorColor 					"#d33682"
 set $emphasizedForeground 			"#586e75"
 set $inverseBackground 				"#002b36"
-
-# Include additional configuration files.
-#include style
-#include workspace
-#include window
-#include launcher
-#include bar
-#include start

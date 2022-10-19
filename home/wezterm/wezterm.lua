@@ -38,7 +38,7 @@ end
 -- issues.
 function get_font_size_by_host()
 	local host = os.capture("hostname", false)
-	if host == "berrio" then return 18
+	if host == "berrio" then return 16
 	elseif host == "vm-lamu" then return 24
 	else return 12
 	end
