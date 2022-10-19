@@ -1,0 +1,33 @@
+# muttrc/color
+# vim: filetype=muttrc
+# My mutt color configuration.
+#
+# Different color settings are roughly organized by which screen they affect
+# most. It's not a precise grouping, since many color settings end up
+# affecting multiple, or nearly every, screen in mutt (e.g., search).
+#
+# See: http://www.mutt.org/doc/manual/#patterns
+# See: http://www.mutt.org/doc/manual/#concept-screens-and-menus
+
+# These color settings mostly affect the index screen.
+color error color1 color0
+color index color10 color0 ~D
+color index color10 color0 ~R
+color index bold color12 color0 ~U
+color indicator bold color3 color8
+color message color4 color0
+color status color5 color0
+color tree color13 color0 
+
+# These color settings mostly affect the pager screen.
+color attachment color6 color0
+color hdrdefault color4 color0
+color bold bold color12 color0
+color normal color12 color0
+color quoted color10 color0
+color tilde color8 color8
+color underline underline color12 color0
+
+# These color settings affect every or nearly every screen.
+color prompt color13 color0
+color search color7 color9

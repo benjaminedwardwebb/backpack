@@ -36,6 +36,7 @@ in
     ./i3
     ./i3status-rust
     ./info
+    ./mutt
     ./nix
     ./nixpkgs
     ./readline
@@ -66,6 +67,7 @@ in
     pkgs.gimp
     #pkgs.shotgun # TODO nixpkgs: shotgun does not support aarch64-linux.
     #pkgs.slack # TODO nixpkgs: slack does not support aarch64-linux.
+    pkgs.mutt
     pkgs.taskwarrior
     pkgs.timewarrior
     pkgs.tmux

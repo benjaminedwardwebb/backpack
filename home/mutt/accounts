@@ -1,0 +1,17 @@
+# muttrc/accounts
+# vim: filetype=muttrc
+# My mutt configuration for managing multiple email accounts.
+#
+# See: https://gist.github.com/miguelmota/9456162
+# See: http://www.df7cb.de/blog/2010/Using_multiple_IMAP_accounts_with_Mutt.html
+
+# Dynamically source account configuration files based on mail folder.
+#
+# See: http://www.mutt.org/doc/manual/#folder-hook
+folder-hook "account.benjaminedwardwebb@gmail.com" "source ~/.config/mutt/account.benjaminedwardwebb@gmail.com"
+
+# Macros for switching accounts
+macro index <f1> "<sync-mailbox><enter-command>source ~/.config/mutt/account.benjaminedwardwebb@gmail.com<enter><change-folder>!<enter>"
+
+# Default account is always benjaminedwardwebb@gmail.com.
+source "~/.config/mutt/account.benjaminedwardwebb@gmail.com"

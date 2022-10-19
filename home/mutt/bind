@@ -1,0 +1,63 @@
+# muttrc/bind
+# vim: filetype=muttrc
+# My mutt keybinding configuration.
+#
+# Keybindings are roughly organized by which screen they affect the most. It's
+# a rough grouping, because within a single bind command you can enforce a
+# keybinding on multiple screens.
+#
+# See: http://www.mutt.org/doc/manual/#bind
+# See: http://www.mutt.org/doc/manual/#concept-screens-and-menus
+
+# These bindings apply to the generic key map.
+#
+# From the mutt manual:
+# 
+# 	This is not a real menu, but is used as a fallback for all of the other
+# 	menus except for the pager and editor modes.
+#
+bind generic k previous-line
+bind generic j next-line
+bind generic gg first-entry
+bind generic G last-entry
+bind generic / search
+bind generic n search-next
+bind generic N search-opposite
+bind generic i exit
+
+# These bindings apply mostly to the index key map.
+bind index,attach,browser k previous-entry
+bind index,attach,browser j next-entry
+bind index,attach,browser K previous-line
+bind index,attach,browser J next-line
+bind index,attach,browser gg first-entry
+bind index,attach,browser G last-entry
+bind index,attach,browser / search
+bind index,attach,browser n search-next
+bind index,attach,browser N search-opposite
+bind index,attach,browser i exit
+bind index y copy-message
+bind index d$ delete-thread
+bind index dd delete-message
+bind index u undelete-thread
+bind index u undelete-message
+bind index 0 imap-fetch-mail
+bind index $ sync-mailbox
+bind index . toggle-new
+bind index a group-reply
+bind index z browse-mailboxes
+
+# These bindings apply mostly to the pager key map.
+bind pager k previous-line
+bind pager j next-line
+bind pager gg top
+bind pager G bottom
+bind pager i exit
+bind pager a group-reply
+bind pager r group-chat-reply
+
+# A macro to mark ALL messages as read.
+# See: https://brianbuccola.com/how-to-mark-all-emails-as-read-in-mutt/
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all new as read"

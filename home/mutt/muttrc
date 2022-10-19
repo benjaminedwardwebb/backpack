@@ -1,0 +1,48 @@
+# muttrc
+# This is my mutt configuration.
+#
+# It is split into multiple files:
+#
+#   - muttrc: miscellaneous mutt settings
+#   - bind: keybinding configuration
+#   - color: color configuration
+#   - accounts: configuration managing multiple email accounts
+#   - account.<email>: configuration for specific email account <email>
+# 
+# These files get concatenated into a single muttrc file by nix code. If I
+# weren't using NixOS or Home Manager, this muttrc would source the other
+# configuration files.
+#
+# See: http://www.mutt.org/doc/manual/
+
+# Regardless of account, I use the same "realname".
+set realname = "Ben Webb"
+
+# Format the status bar.
+set status_format=" %f   %m messages   %n new   %u unread   %> ? (help)  %P "
+set status_on_top=yes
+
+# Disable the help bar. You can just press ? for help if needed.
+set help=no
+
+# Configure vim as my editor. Set related editor settings.
+set editor = "vim"
+set charset = "utf-8"
+
+# Don't display linebreak markers or tildes on empty lines after the feed.
+set markers=no
+set tilde=no
+
+# Don't mark unread messages as old after exiting mutt without reading them.
+set mark_old=no
+
+# Allow editing of headers on outgoing messages.
+set edit_headers=yes
+
+# Don't wait for a key press when exiting another program started by mutt.
+set wait_key=no
+
+# Strip (weed) out mail headers when piping mail to another program.
+set weed=yes
+set pipe_decode=yes
+set pipe_decode_weed=yes
