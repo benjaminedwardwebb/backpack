@@ -1,11 +1,13 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, options, specialArgs, modulesPath, nixosConfig, osConfig }:
 
 let
-  username = "benjaminedwardwebb";
+  hostname = "${nixosConfig.networking.hostName}";
+  username = "${nixosConfig.users.users.benjaminedwardwebb.name}";
+  homeDirectory = "${nixosConfig.users.users.benjaminedwardwebb.home}";
 in
 {
   home.username = username;
-  home.homeDirectory = "/home/${username}";
+  home.homeDirectory = homeDirectory;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -45,6 +47,16 @@ in
     ./tmux
     ./wezterm
     ./xdg
+    (
+      with builtins;
+      let
+        hostSpecificConfiguration = /. + "${homeDirectory}/hosts/${hostname}/static/home/home.nix";
+        hostSpecificConfigurationExists = pathExists hostSpecificConfiguration;
+      in
+      if hostSpecificConfigurationExists
+      then hostSpecificConfiguration
+      else { }
+    )
   ];
 
   home.packages = [

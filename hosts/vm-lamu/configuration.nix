@@ -73,12 +73,9 @@
   programs.dconf.enable = true;
 
   # Use Apple's time server to match the system hosting the virtual machine.
+  networking.networkmanager.enable = true;
   networking.timeServers = [ "time.apple.com" ];
-  # Keep default time zone UTC. System time is synchronized to local time
-  # already and setting the time zone offsets the time twice. Using no offset
-  # gives accurate local time. Clearly something strange is happening.
-  # TODO vm-Lamu: Fix the issue where setting a time zone doubles the offset.
-  #time.timeZone = "America/New_York";
+  time.timeZone = "America/New_York";
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -88,14 +85,17 @@
     wget
   ];
 
-  # Setting mutableUsers to true to allow passwords to be set with passwd. I
-  # may be able to amend this by using the passwordFile option.
-  users.mutableUsers = true;
+  services.openssh.enable = false;
+  security.sudo.execWheelOnly = true;
+  security.sudo.extraConfig = "Defaults  timestamp_timeout=720"; # minutes
+  users.mutableUsers = false;
   users.users.benjaminedwardwebb = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     description = "Benjamin Edward Webb";
-  };
+  }
+  # THERE ARE NO SECRETS STORED IN THIS REPOSITORY.
+  // import /etc/secrets/password.nix;
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;

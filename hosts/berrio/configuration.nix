@@ -72,10 +72,9 @@
     description = "Benjamin Edward Webb";
   }
   # THERE ARE NO SECRETS STORED IN THIS REPOSITORY.
-  // import /etc/password.nix;
+  // import /etc/secrets/password.nix;
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.benjaminedwardwebb = import ../../home/home.nix;
 }
-
