@@ -69,7 +69,7 @@ in
     pkgs.timewarrior
     pkgs.tmux
     pkgs.vim
-    pkgs.vimpager
+    pkgs.vimpager-latest
     pkgs.w3m
     pkgs.weechat
     pkgs.wezterm
