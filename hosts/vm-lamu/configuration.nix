@@ -91,7 +91,10 @@
     wget
   ];
 
+  # OpenSSH is ALWAYS disabled on this host.
   services.openssh.enable = false;
+  services.openssh.passwordAuthentication = false;
+  services.openssh.kbdInteractiveAuthentication = false;
   security.sudo.execWheelOnly = true;
   security.sudo.extraConfig = "Defaults  timestamp_timeout=720"; # minutes
   users.mutableUsers = false;

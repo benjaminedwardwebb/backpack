@@ -62,7 +62,11 @@
     wget
   ];
 
+  # OpenSSH should always be disabled, except as needed for brief file
+  # transfer operations between hosts I manage. Use key-based authentication.
   services.openssh.enable = false;
+  services.openssh.passwordAuthentication = false;
+  services.openssh.kbdInteractiveAuthentication = false;
   security.sudo.execWheelOnly = true;
   security.sudo.extraConfig = "Defaults  timestamp_timeout=720"; # minutes
   users.mutableUsers = false;
@@ -70,6 +74,13 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     description = "Benjamin Edward Webb";
+    # THESE ARE PUBLIC KEYS. THERE ARE NO SECRETS STORED IN THIS REPOSITORY.
+    # That said, I still avoid publishing my company-owned public SSH key
+    # in case RSA is cracked and proved worthless. I don't expect this to
+    # happen soon, but I'm not a cryptographer.
+    # See: https://security.stackexchange.com/a/150542
+    openssh.authorizedKeys.keys = [
+    ] ++ import /etc/secrets/authorizedKeys.nix;
   }
   # THERE ARE NO SECRETS STORED IN THIS REPOSITORY.
   // import /etc/secrets/password.nix;

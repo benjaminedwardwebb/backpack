@@ -18,15 +18,3 @@ log() {
 	unset __log_message
 	unset __log_line
 }
-
-log::main() {
-	__log_process_id="$$"
-	__log_file="/tmp/shell.$__log_process_id.log"
-
-	echo "this shell (process $$) logs to $__log_file"
-
-	unset __log_process_id
-	unset __log_file
-}
-
-log::main
