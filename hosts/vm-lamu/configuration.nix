@@ -1,5 +1,8 @@
 # configuration.nix
 # NixOS configuration for host vm-lamu: a port I've docked at.
+#
+# This host is a virtual machine that runs on company-owned laptop.
+#
 # See: https://en.wikipedia.org/wiki/Lamu_Island
 # See: nixos-help
 { config, pkgs, ... }:
@@ -72,9 +75,12 @@
 
   programs.dconf.enable = true;
 
-  # Use Apple's time server to match the system hosting the virtual machine.
   networking.networkmanager.enable = true;
-  networking.timeServers = [ "time.apple.com" ];
+  # My company-owned laptop can only connect to an internal, corporate time
+  # server (and only while on the corporate VPN). Is the hostname of this time
+  # server secret? I think it's debatable, but I am erring on the safe side.
+  # See: https://security.stackexchange.com/questions/43315/should-a-hostname-ever-be-considered-a-secret
+  networking.timeServers = import /etc/secrets/timeServers.nix;
   time.timeZone = "America/New_York";
 
   sound.enable = true;
