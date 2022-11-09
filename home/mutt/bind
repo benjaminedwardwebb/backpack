@@ -18,6 +18,10 @@
 #
 bind generic k previous-line
 bind generic j next-line
+bind generic K previous-page
+bind generic J next-page
+bind generic <Up> previous-line
+bind generic <Down> next-line
 bind generic gg first-entry
 bind generic G last-entry
 bind generic / search
@@ -28,8 +32,10 @@ bind generic i exit
 # These bindings apply mostly to the index key map.
 bind index,attach,browser k previous-entry
 bind index,attach,browser j next-entry
-bind index,attach,browser K previous-line
-bind index,attach,browser J next-line
+bind index,attach,browser K previous-page
+bind index,attach,browser J next-page
+bind index,attach,browser <Up> previous-line
+bind index,attach,browser <Down> next-line
 bind index,attach,browser gg first-entry
 bind index,attach,browser G last-entry
 bind index,attach,browser / search
@@ -38,7 +44,9 @@ bind index,attach,browser N search-opposite
 bind index,attach,browser i exit
 bind index y copy-message
 bind index d$ delete-thread
-bind index dd delete-message
+macro index,pager dd \
+	":set resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set resolve=yes\n<next-undeleted>" \
+	"mark as read and delete"
 bind index u undelete-thread
 bind index u undelete-message
 bind index 0 imap-fetch-mail

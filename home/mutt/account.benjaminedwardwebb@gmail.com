@@ -17,7 +17,15 @@ set smtp_pass = "`pass mutt-benjaminedwardwebb@gmail.com`"
 # Set folder settings for this account.
 set spoolfile = "+INBOX"
 set postponed ='+[Gmail]/Drafts'
-set trash = '+[Gmail]/Trash'
+# In gmail, the following trash folder equates to a label named "Archival".
+# When messages are deleted, they have the "Inbox" label removed and the
+# "Archival" label applied.
+#
+# Note, how gmail responds to IMAP deletes depends on its IMAP settings. 
+# See: https://support.google.com/mail/thread/11787139?hl=en
+# See: https://www.howtogeek.com/660347/how-to-find-archived-emails-in-gmail/
+set trash = "+Archival"
+set delete = "ask-yes"
 
 # Set local data storage directories for this account.
 set header_cache = ~/.local/share/mutt/benjaminedwardwebb@gmail.com/cache/headers
