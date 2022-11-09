@@ -4,6 +4,6 @@
 # This relies on /etc/hostname.
 let
   hostname = with builtins;
-    replaceStrings ["\n"] [""] (readFile /etc/hostname);
+    replaceStrings [ "\n" ] [ "" ] (readFile /etc/hostname);
 in
 import ./hosts/${hostname}/configuration.nix

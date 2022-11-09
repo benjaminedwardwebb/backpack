@@ -11,7 +11,7 @@ let
     in
     if hostSpecificSshKeygripsExist
     then import hostSpecificSshKeygrips
-    else [];
+    else [ ];
 in
 {
   programs.gpg.enable = true;
