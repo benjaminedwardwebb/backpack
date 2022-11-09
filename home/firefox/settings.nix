@@ -14,20 +14,27 @@
   "svg.context-properties.content.enabled" = true;
 
   # Enable some privacy-related settings.
+  # The most interesting, in my opinion, is enabling global privacy control
+  # (GPC). GPC seems to have some traction and is mentioned in the CCPA.
+  # See: https://globalprivacycontrol.org/
+  # See: https://www.oag.ca.gov/sites/all/files/agweb/pdfs/privacy/oal-sub-final-text-of-regs.pdf
+  "privacy.globalprivacycontrol.enabled" = true;
+  "privacy.globalprivacycontrol.functionality.enabled" = true;
+
   # See: https://theprivacyguide1.github.io/about_config.html 
   "privacy.firstparty.isolate" = true;
+  "privacy.trackingprotection.enabled" = true;
+  "privacy.trackingprotection.socialtracking.annotate.enabled" = true;
+  "privacy.trackingprotection.socialtracking.enabled" = true;
+  "extensions.pocket.api" = "blank";
+  "extensions.pocket.enabled" = false;
+  "extensions.pocket.oAuthConsumerKey" = "blank";
+  "extensions.pocket.site" = "blank";
   # Resisting fingerprinting sounds cool, but it broke vimium last
   # time I enabled it (duplicate tabs were opened each time a link was
   # opened in a new tab).
   # See: https://github.com/philc/vimium/pull/4000
   # "privacy.resistFingerprinting" = true;
-  "privacy.trackingprotection.enabled" = true;
-  "privacy.trackingprotection.socialtracking.annotate.enabled" = true;
-  "privacy.trackingprotection.socialtracking.enabled" = true;
-  "extensions.pocket.enabled" = false;
-  "extensions.pocket.site" = "blank";
-  "extensions.pocket.oAuthConsumerKey" = "blank";
-  "extensions.pocket.api" = "blank";
 
   # These settings are suggested to improve performance of firefox.
   # See: https://softwarekeep.com/blog/speed-up-firefox-browser
