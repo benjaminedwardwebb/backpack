@@ -7,4 +7,4 @@
 
 # Start dmenu (a program launcher) using the modifier key and a forward slash,
 # like searching in vim. Style parameters for font and color are passed.
-bindsym $mod+slash exec dmenu_run -p "=>" -l 15 -fn 'FiraCode-13' -nb $background -nf $foreground -sb $emphasizedBackground -sf $accentColor
+bindsym $mod+slash exec dmenu_run -p "" -l 0 -fn 'Fira Code Nerd Font-20' -nb $background -nf $foreground -sb $emphasizedBackground -sf $accentColor
