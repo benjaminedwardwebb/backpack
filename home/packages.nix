@@ -31,6 +31,7 @@
     w3m
     weechat
     wezterm
+    zathura
 
     # command line tools
     awscli
