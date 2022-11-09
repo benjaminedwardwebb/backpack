@@ -1,4 +1,5 @@
-function keys {
+# Prints an ASCII keyboard.
+function keyboard {
 	YELLOW="\e[00;33m"
 	MAGENTA="\e[00;35m"
 	BLUE="\e[00;34m"

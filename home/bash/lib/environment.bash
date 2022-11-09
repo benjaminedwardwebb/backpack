@@ -12,8 +12,8 @@ export BROWSER="firefox"
 export PAGER="vimpager"
 
 # Export environment variables for important directories.
+export BACKPACK="/etc/nixos"
 export LOCAL_BIN="$HOME/.local/bin"
-export BACKPACK="$HOME/backpack"
 export PROJECTS="$HOME/projects"
 export CODE="$PROJECTS/code"
 export BEW="$CODE/benjaminedwardwebb"

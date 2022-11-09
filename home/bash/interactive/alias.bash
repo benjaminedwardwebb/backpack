@@ -2,7 +2,8 @@
 # Defines bash aliases.
 log "executing alias.bash"
 
-# Alias certain bash language constructs.
+# Alias certain bash language constructs for an interactive shell experience
+# that is slightly closer to English.
 function not {
   ! $@
 }
@@ -24,5 +25,6 @@ alias cloc="tokei"
 alias tldr="tealdeer"
 alias hex="hexyl"
 alias scan="rustscan"
+alias open="xdg-open"
 
 log "sourced alias.bash"

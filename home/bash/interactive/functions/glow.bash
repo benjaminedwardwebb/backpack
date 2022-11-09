@@ -1,24 +1,16 @@
-# Usage:
-# glow [markdown_file] => glow $markdown_file | less
-# glow [args] => glow $args
-if dependency glow && dependency less && dependency __args; then
-  __glow_executable="$(which glow)"
+# A wrapper over the glow command.
+#
+# Enforces style (light or dark mode) and automatically pages when glow is
+# called directly on a markdown file.
+function glow {
+	local -r __glow_executable="$(which glow)"
 
-  function glow {
-    local args="$@"
+	# Eventually this style parameter should be injected by nix to switch
+	# between light and dark modes.
+    local -r style="light"
 
-    local style="$THEME_BACKGROUND"
-
-    if args_is_markdown_file $args; then
-      $__glow_executable -s $style $args | less -r
-    else
-      $__glow_executable -s $style $args
-    fi
-  }
-elif dependency glow; then
-  unit # glow is glow
-elif dependency less; then
-  alias glow="less"
-else
-  alias glow="more"
-fi
+	case "$@" in
+		*.md) $__glow_executable -s $style "$@" | less -r ;;
+		*) $__glow_executable -s $style "$@" ;;
+	esac
+}

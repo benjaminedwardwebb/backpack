@@ -1,5 +1,6 @@
+# Wraps the bc command with friendly usage.
 function calc {
-	local -r args=$@
+	local -r args="$@"
 	local -r number_of_arguments="$#"
 
 	local -r __bc=$(which bc)

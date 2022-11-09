@@ -1,7 +1,19 @@
-# TODO not well tested
-# TODO gives stdin recursive grep instead of operating on curdir .; not for ggrep, but it can't recognize that here...
+# Replace the first argument with the second argument in all files,
+# recursively, in the current directory.
 function replace {
-  local search="$1"
-  local replace="$2"
-  ggrep -RlI --color=never "$search" | xargs sed -i "s/$search/$replace/g"
+	local search="$1"
+	local replace="$2"
+
+	function usage {
+		echo "usage: replace [old] [new]"
+	}
+	function __replace {
+		grep -RlI --color=never "$search" \
+			| xargs sed -i "s/$search/$replace/g"
+	}
+
+	case "$@" in
+		--help|-h) usage ;;
+		*) __replace ;;
+	esac
 }
