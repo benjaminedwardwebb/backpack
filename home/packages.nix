@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     # desktop environment
-    dmenu
+    dmenu-rs
     fira-code
     i3
     i3status-rust

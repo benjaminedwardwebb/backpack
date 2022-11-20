@@ -25,18 +25,8 @@
     ./hardware-configuration.nix
     # See: https://nix-community.github.io/home-manager/index.html#sec-install-nixos-module
     <home-manager/nixos>
+    ../../pkgs
   ];
-
-  # Add the Nix User Repository (NUR) to the available packages.
-  nixpkgs.config.packageOverrides = pkgs: {
-    nur = import
-      (
-        builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz"
-      )
-      {
-        inherit pkgs;
-      };
-  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

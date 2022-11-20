@@ -27,6 +27,7 @@ tree --noreport -L 1
 ├── home                Home Manager configuration for the user environment
 ├── hosts               NixOS configurations for host system environments
 ├── lib                 library of re-usable nix code
+├── pkgs                overlays and custom packages
 ├── README.md           repository's README
 ├── scripts             utility scripts and executables
 └── shell.nix           repository's nix-managed development environment

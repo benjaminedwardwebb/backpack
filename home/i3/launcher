@@ -5,6 +5,11 @@
 #
 # vim: filetype=i3config
 
-# Start dmenu (a program launcher) using the modifier key and a forward slash,
-# like searching in vim. Style parameters for font and color are passed.
-bindsym $mod+slash exec dmenu_run -p "" -l 0 -fn 'Fira Code Nerd Font-20' -nb $background -nf $foreground -sb $emphasizedBackground -sf $accentColor
+# Start dmenu-rs (a program launcher) using the modifier key and a forward
+# slash, like searching in vim. Style parameters are also passed.
+# See: https://github.com/Shizcow/dmenu-rs
+# See: https://tools.suckless.org/dmenu/
+bindsym $mod+slash exec dmenu_run --lines 0 --font 'Fira Code Nerd Font-20' --nb $background --nf $foreground --sb $emphasizedBackground --sf $accentColor
+
+# Equivalent command for the original dmenu written in C.
+#bindsym $mod+slash exec dmenu_run -p "" -l 0 -fn 'Fira Code Nerd Font-20' -nb $background -nf $foreground -sb $emphasizedBackground -sf $accentColor
