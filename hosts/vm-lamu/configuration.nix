@@ -1,7 +1,7 @@
 # configuration.nix
 # NixOS configuration for host vm-lamu: a port I've docked at.
 #
-# This host is a virtual machine that runs on company-owned laptop.
+# This host is a virtual machine that runs on my company-owned laptop.
 #
 # See: https://en.wikipedia.org/wiki/Lamu_Island
 # See: nixos-help
@@ -27,6 +27,7 @@
 
   imports = [
     ./hardware-configuration.nix
+    ./vmware.nix
     # See: https://nix-community.github.io/home-manager/index.html#sec-install-nixos-module
     <home-manager/nixos>
     ../../pkgs
@@ -35,8 +36,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use linux kernel version 5.19.
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_19;
+  # Use a linux kernel version that supports aarch64.
+  boot.kernelPackages = pkgs.linuxPackages_6_0;
 
   services.xserver.enable = true;
   services.xserver.autorun = true;
