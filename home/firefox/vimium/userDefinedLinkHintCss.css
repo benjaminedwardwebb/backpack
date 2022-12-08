@@ -1,11 +1,52 @@
 /* userDefinedLinkHintCss.css
  * Custom CSS for vimium elements. */
-/* TODO vimium: My custom CSS should switch colors based on system color theme. */
+:root {
+	--link-color: 						#268bd2;
+	--visited-color: 					#6c71c4;
+	--selection-background-color: 		#cb4b16;
+	--code-color: 						#2aa198;
+
+	--blue: 							#268bd2;
+	--cyan: 							#2aa198;
+	--green: 							#859900;
+	--yellow: 							#b58900;
+	--orange: 							#cb4b16;
+	--red: 								#dc322f;
+	--magenta: 							#d33682;
+	--violet: 							#6c71c4;
+}
+
+/* Set variables when the dark color scheme is active. */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: 				#002b36;
+		--highlight-color: 					#073642;
+		--accent-color: 					#b58900;
+		--primary-content-color: 			#839496;
+		--secondary-content-color: 			#586e75;
+		--emphasized-content-color: 		#93a1a1;
+		--selection-content-color: 			#eee8d5;
+	}
+}
+
+/* Set variables when the light color scheme is active. */
+@media (prefers-color-scheme: light) { 
+	:root {
+		--background-color: 				#fdf6e3;
+		--highlight-color: 					#eee8d5;
+		--accent-color: 					#859900;
+		--primary-content-color: 			#657b83;
+		--secondary-content-color: 			#93a1a1;
+		--emphasized-content-color: 		#586e75;
+		--selection-content-color: 			#073642;
+	}
+}
+
 
 /* linkhint boxes */
 div > .vimiumHintMarker {
 	background: none;
-	background-color: #268bd2;
+	background-color: var(--link-color);
 	box-shadow: none;
 	border: none;
 	border-radius: 3px;
@@ -13,7 +54,7 @@ div > .vimiumHintMarker {
 
 /* linkhint text */
 div > .vimiumHintMarker span {
-	color: #073642;
+	color: var(--highlight-color);
 	font-family: 'Fira Code', monospace;
 	font-weight: bold;
 	font-size: 12px;
@@ -27,33 +68,39 @@ div > .vimiumHintMarker > .matchingCharacter {
 
 /* input text-input back*/
 input#vomnibarInput.vimiumReset {
-	background-color: #073642;
-	color: #93a1a1;
+	/*background-color: var(--highlight-color);*/
+	background-color: var(--background-color);
+	color: var(--emphasized-content-color);
 }
 
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 #vomnibar {
-	background-color: #002b36;
-	border-color: #002b36;
+	/*
+	background-color: var(--background-color);
+	border-color: var(--background-color);
+	*/
+	background-color: var(--highlight-color);
+	border-color: var(--highlight-color);
 	box-shadow: none;
 }
 
 #vomnibar ::selection {
-	background-color: #cb4b16;
-	color: #eee8d5;
+	background-color: var(--selection-background-color);
+	color: var(--selection-content-color);
 }
 
 /* input frame */
 #vomnibar .vomnibarSearchArea {
-	background-color: #002b36;
+	/*background-color: var(--background-color);*/
+	background-color: var(--highlight-color);
 	border-bottom: #3f3f3f;
 	white-space: nowrap; /* Aligns the ::before colon and input. */
 	font-size: 0px; /* Removes whitespace between ::before colon and input. */
 }
 
 #vomnibar .vomnibarSearchArea::before {
-	color: #586e75;
+	color: var(--secondary-content-color);
 	font-family: 'Fira Code', monospace;
 	font-size: 20px;
 	font-weight: normal;
@@ -66,10 +113,14 @@ input#vomnibarInput.vimiumReset {
 /* input border */
 #vomnibar input {
 	width: calc(100% - 12px); /* Shaves off extra length of ::before colon. */
-	background-color: #002b36;
-	border-color: #002b36;
+	/*
+	background-color: var(--background-color);
+	border-color: var(--background-color);
+	*/
+	background-color: var(--highlight-color);
+	border-color: var(--highlight-color);
 	box-shadow: none;
-	color: #839496;
+	color: var(--primary-content-color);
 	font-family: 'Fira Code', monospace;
 	font-size: 20px; /* Default from vimium made explicit here. */
 	display: inline-block;
@@ -79,7 +130,8 @@ input#vomnibarInput.vimiumReset {
 
 /* results background */
 #vomnibar ul {
-	background-color: #002b36;
+	/*background-color: var(--background-color);*/
+	background-color: var(--highlight-color);
 }
 
 #vomnibar li {
@@ -88,36 +140,37 @@ input#vomnibarInput.vimiumReset {
 
 /* Second line URL */
 #vomnibar li .vomnibarUrl {
-	color: #268bd2;
+	color: var(--link-color);
 	font-family: 'Fira Code', monospace;
 }
 
 /* Second line URL-Match */
 #vomnibar li .vomnibarMatch {
-	color: #b58900;
+	color: var(--accent-color);
 	font-weight: normal;
 	font-family: 'Fira Code', monospace;
 }
 
 /* Selected */
 #vomnibar li.vomnibarSelected {
-	background-color: #073642;
+	/*background-color: var(--highlight-color);*/
+	background-color: var(--background-color);
 }
 
 /* Title-Match */
 #vomnibar li em .vomnibarMatch, #vomnibar li .vomnibarTitle .vomnibarMatch {
-	color: #b58900;
+	color: var(--accent-color);
 	font-weight: normal;
 	font-family: 'Fira Code', monospace;
 }
 
 /* Title */
 #vomnibar li em, #vomnibar li .vomnibarTitle {
-	color: #839496;
+	color: var(--primary-content-color);
 	font-family: 'Fira Code', monospace;
 }
 
 #vomnibar li .vomnibarSource {
-	color: #586e75;
+	color: var(--secondary-content-color);
 	font-family: 'Fira Code', monospace;
 }
