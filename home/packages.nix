@@ -26,7 +26,7 @@
     taskwarrior
     timewarrior
     tmux
-    vim
+    vimHugeX # vimHugeX is compiled with X11 clipboard support (and is huge).
     vimpager-latest
     w3m
     weechat
