@@ -96,4 +96,24 @@ return {
 		},
 		compose_cursor = color.attention,
 	},
+
+	keys = {
+		-- Clipboard takes precedence over ctrl-v because it is defined last.
+		{
+			key = 'v',
+			mods = 'CTRL',
+			action = wezterm.action.PasteFrom 'PrimarySelection',
+		},
+		{
+			key = 'v',
+			mods = 'CTRL',
+			action = wezterm.action.PasteFrom 'Clipboard',
+		},
+		{
+			key = 'c',
+			mods = 'CTRL',
+			action = wezterm.action.CopyTo 'ClipboardAndPrimarySelection',
+		},
+	},
+
 }
