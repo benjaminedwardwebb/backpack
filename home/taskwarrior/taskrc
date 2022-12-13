@@ -1,0 +1,13 @@
+# Configure hooks directory. Treat hooks as configuration not data.
+hooks.location=$XDG_CONFIG_HOME/task/hooks
+
+# Configure taskserver integration.
+taskd.server=task.benjaminedwardwebb.me:53589
+taskd.certificate=$XDG_CONFIG_HOME\/task\/keys\/public.cert
+taskd.key=$XDG_CONFIG_HOME\/task\/keys\/private.key
+taskd.ca=$XDG_CONFIG_HOME\/task\/keys\/ca.cert
+# THESE TASKD CREDENTIALS ARE NOT A SECRET TO ME.
+# It's unclear to me if this UUID is a password. I am the only user of my
+# taskserver and I choose not to treat it as a secret. The private key
+# authenticates me.
+taskd.credentials=me\/benjaminedwardwebb\/c99982b9-bc59-4910-a0e5-062a7c4dcdde

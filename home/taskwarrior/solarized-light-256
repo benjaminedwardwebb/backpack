@@ -46,7 +46,7 @@ rule.precedence.color=deleted,completed,active,keyword.,tag.,project.,overdue,sc
 # General decoration
 color.label=
 color.label.sort=
-color.alternate=on color7
+color.alternate=on color8
 color.header=color2
 color.footnote=color2
 color.warning=color7 on color3

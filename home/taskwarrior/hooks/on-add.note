@@ -47,9 +47,9 @@ def get_note_directory_from_environment() -> Path:
         return home
     def get_default_note() -> str:
         home = get_home()
-        default_note = f"{home}/note"
+        default_note = f"{home}/notes"
         return default_note
-    string = os.getenv("NOTE", get_default_note())
+    string = os.getenv("NOTES", get_default_note())
     path = Path(string)
     return path
 
