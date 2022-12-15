@@ -32,4 +32,4 @@ bindsym $mod+Shift+j workspace next
 bindsym $mod+Shift+k workspace prev
 
 # create terminal in new workspace
-bindsym $mod+shift+n exec terminal; exec i3-new-workspace --move "   𝝺  "
+bindsym $mod+shift+n exec terminal; exec i3-new-workspace --move "  "

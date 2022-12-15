@@ -62,19 +62,18 @@ set $news "2:  "
 set $email "3:  "
 set $chat "4:  "
 set $browser "5:  "
-set $terminal "6:   𝝺  "
+set $terminal "6:  "
 
 set $ws1 "1:  "
 set $ws2 "2:  "
 set $ws3 "3:  "
 set $ws4 "4:  "
 set $ws5 "5:  "
-set $ws6 "6:   𝝺  "
-set $ws7 "7:   𝝺  "
-set $ws8 "8:   𝝺  "
-set $ws9 "9:   𝝺  "
-set $ws10 "10:   𝝺  "
-
+set $ws6 "6:  "
+set $ws7 "7:  "
+set $ws8 "8:  "
+set $ws9 "9:  "
+set $ws10 "10:  "
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
