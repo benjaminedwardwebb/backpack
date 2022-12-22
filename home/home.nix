@@ -48,6 +48,7 @@ in
     ./tmux
     ./wezterm
     ./xdg
+    ./zathura
 
     (
       with builtins;

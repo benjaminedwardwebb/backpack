@@ -8,6 +8,10 @@ map <C-e> open
 
 # Configure theme configuration.
 set font "FiraCode Nerd Font 16"
+
+# Disable the status bar.
+set guioptions none
+
 set notification-error-bg       "#eee8d5" # base2  # seem not work
 set notification-error-fg       "#dc322f" # red
 set notification-warning-bg     "#eee8d5" # base2
@@ -42,6 +46,7 @@ set default-fg                  "#657b83" # base00
 set render-loading              true
 
 # Recolor book content's color
-set recolor-lightcolor          "#fdf6e3" # base3
-set recolor-darkcolor           "#657b83" # base00
-set recolor                     "true"
+set recolor-lightcolor "#fdf6e3" # base3
+set recolor-darkcolor "#657b83" # base00
+set recolor true
+set recolor-keephue true
