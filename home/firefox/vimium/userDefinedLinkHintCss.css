@@ -68,18 +68,13 @@ div > .vimiumHintMarker > .matchingCharacter {
 
 /* input text-input back*/
 input#vomnibarInput.vimiumReset {
-	/*background-color: var(--highlight-color);*/
-	background-color: var(--background-color);
+	background-color: var(--highlight-color);
 	color: var(--emphasized-content-color);
 }
 
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 #vomnibar {
-	/*
-	background-color: var(--background-color);
-	border-color: var(--background-color);
-	*/
 	background-color: var(--highlight-color);
 	border-color: var(--highlight-color);
 	box-shadow: none;
@@ -92,7 +87,6 @@ input#vomnibarInput.vimiumReset {
 
 /* input frame */
 #vomnibar .vomnibarSearchArea {
-	/*background-color: var(--background-color);*/
 	background-color: var(--highlight-color);
 	border-bottom: #3f3f3f;
 	white-space: nowrap; /* Aligns the ::before colon and input. */
@@ -113,10 +107,6 @@ input#vomnibarInput.vimiumReset {
 /* input border */
 #vomnibar input {
 	width: calc(100% - 12px); /* Shaves off extra length of ::before colon. */
-	/*
-	background-color: var(--background-color);
-	border-color: var(--background-color);
-	*/
 	background-color: var(--highlight-color);
 	border-color: var(--highlight-color);
 	box-shadow: none;
@@ -130,7 +120,6 @@ input#vomnibarInput.vimiumReset {
 
 /* results background */
 #vomnibar ul {
-	/*background-color: var(--background-color);*/
 	background-color: var(--highlight-color);
 }
 
@@ -153,7 +142,6 @@ input#vomnibarInput.vimiumReset {
 
 /* Selected */
 #vomnibar li.vomnibarSelected {
-	/*background-color: var(--highlight-color);*/
 	background-color: var(--background-color);
 }
 
