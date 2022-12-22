@@ -33,7 +33,6 @@ in
     ./bash
     ./dircolors
     ./direnv
-    ./es
     ./firefox
     ./git
     ./gpg
