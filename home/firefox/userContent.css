@@ -22,6 +22,7 @@
 	--visited-color: 					#6c71c4;
 	--selection-background-color: 		#cb4b16;
 	--code-color: 						#2aa198;
+	--attention-color: 					#cb4b16;
 
 	--blue: 							#268bd2;
 	--cyan: 							#2aa198;
@@ -31,6 +32,11 @@
 	--red: 								#dc322f;
 	--magenta: 							#d33682;
 	--violet: 							#6c71c4;
+
+	--green-light: 						#85990066;
+	--green-lighter: 					#85990033;
+	--red-light:						#dc322f66;
+	--red-lighter: 						#dc322f33;
 }
 
 /* Set variables when the dark color scheme is active. */
@@ -100,7 +106,7 @@
 	header,h1,h2,h3,h4,h5,h6 {
 		color: var(--emphasized-content-color) !important;
 	}
-	form,input {
+	form,input,textarea {
 		color: var(--emphasized-content-color) !important;
 		background-color: var(--highlight-color) !important;
 		border-color: var(--highlight-color) !important;
@@ -271,6 +277,170 @@
 		background-color: var(--highlight-color) !important;
 	}
 
+	/* Emphasize diff lines with transparent variations of theme colors. */
+	.blob-code-deletion {
+		background-color: var(--red-lighter) !important;
+	}
+	.blob-code-deletion .x {
+		background-color: var(--red-light) !important;
+	}
+	.blob-code-addition {
+		background-color: var(--green-lighter) !important;
+	}
+	.blob-code-addition .x {
+		background-color: var(--green-light) !important;
+	}
+
+	/* Emphasize buttons. */
+	.btn-primary {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+	.btn-primary > .octicon {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+
+	/* Emphasize input, forms, and textareas. */
+	form {
+		color: var(--primary-content-color) !important;
+		background-color: var(--background-color) !important;
+	}
+	input > .octicon {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+	input > span {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+	.js-site-search-form > .form-control {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+	.auto-search-group > .octicon-search {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+	.octicon-search {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+	.octicon-markdown {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+
+	/* Align the attach files button with form and input colors. */
+	.drag-and-drop > .color-bg-subtle {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+
+	/* GitHub employs a few strange caret figures that I could not figure out
+	 * how to style with CSS.
+	 *
+	 * This comment is here to commemorate the struggle.
+	 */
+
+	/* Subtle highlight of git objects like commits and branches. */
+	.branch-name, .commit-ref, .commit-ref > a, .commit-ref > a > span {
+		color: var(--emphasized-content-color) !important;
+		background-color: var(--highlight-color) !important;
+	}
+
+	/* Align other elements related to success (green), failure (red), and
+	 * completeness (violet) to the color scheme.
+	 */
+	.color-fg-success, .color-fg-success > .octicon {
+		color: var(--green) !important;
+	}
+	.color-fg-danger, .color-fg-danger > .octicon {
+		color: var(--red) !important;
+	}
+	.hx_dot-fill-pending-icon, .hx_dot-fill-pending-icon > .octicon {
+	}
+
+	.color-fg-open {
+		color: var(--green) !important;
+	}
+	.color-fg-done {
+		color: var(--violet) !important;
+	}
+	.color-fg-closed {
+		color: var(--red) !important;
+	}
+
+	.diffstat-block-added {
+		background-color: var(--green) !important;
+	}
+
+	.State, .State > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--primary-content-color) !important;
+	}
+	.State--open, .State--open > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--green) !important;
+	}
+	.State--merged, .State--merged > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--violet) !important;
+	}
+	.State--closed, .State--closed > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--red) !important;
+	}
+
+	.branch-action-state-clean .branch-action-icon {
+		background-color: var(--green) !important;
+	}
+	.branch-action-state-clean .branch-action-icon > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--green) !important;
+	}
+	.branch-action-state-merged .branch-action-icon {
+		background-color: var(--violet) !important;
+	}
+	.branch-action-state-merged .branch-action-icon > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--violet) !important;
+	}
+	.branch-action-state-dirty .branch-action-icon {
+		background-color: var(--primary-content-color) !important;
+	}
+	.branch-action-state-dirty .branch-action-icon > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--primary-content-color) !important;
+	}
+
+	.completeness-indicator-success {
+		color: var(--background-color) !important;
+		background-color: var(--green) !important;
+	}
+	.completeness-indicator-success > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--green) !important;
+	}
+	.completeness-indicator-error {
+		color: var(--background-color) !important;
+		background-color: var(--red) !important;
+	}
+	.completeness-indicator-error > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--red) !important;
+	}
+	.completeness-indicator-problem {
+	}
+	.completeness-indicator-problem > .octicon {
+	}
+
+	.color-bg-accent-emphasis, .color-bg-accent-emphasis > .octicon {
+		color: var(--background-color) !important;
+		background-color: var(--blue) !important;
+		border-color: var(--highlight-color) !important;
+	}
+
 	/* Align PR status check donut chart colors with the color scheme. */
 	.donut-chart > .success {
 		fill: var(--green) !important;
@@ -284,4 +454,5 @@
 	.donut-chart > .neutral {
 		fill: var(--secondary-content-color) !important;
 	}
+
 }
