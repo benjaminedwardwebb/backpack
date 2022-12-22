@@ -40,8 +40,6 @@ in
     ./i3status-rust
     ./info
     ./mutt
-    ./nix
-    ./nixpkgs
     ./readline
     ./systemd
     ./taskwarrior
