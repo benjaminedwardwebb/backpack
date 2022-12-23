@@ -14,6 +14,18 @@
     pass
     pinentry-gtk2
 
+    # editor
+    # neovim is enabled in the neovim directory with home-manager.
+    page # TODO home: page, a neovim-based pager in rust, has a problem reading man pages.
+    vimpager-latest
+
+    # development
+    # TODO home: Language-specific tools should be loaded per-project via shell.nix and some custom, pre-packaged modules.
+    python310
+    metals
+    rnix-lsp
+    rust-analyzer
+
     # applications
     bluez
     browserpass
@@ -26,8 +38,6 @@
     taskwarrior
     timewarrior
     tmux
-    vimHugeX # vimHugeX is compiled with X11 clipboard support (and is huge).
-    vimpager-latest
     w3m
     weechat
     wezterm
@@ -66,8 +76,5 @@
     tree
     unixtools.netstat
     xclip
-
-    # development
-    python310
   ];
 }

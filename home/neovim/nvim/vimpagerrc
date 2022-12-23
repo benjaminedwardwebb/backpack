@@ -1,0 +1,8 @@
+" vimpagerrc
+" A minimal, performance optimized vimrc used for paging.
+"
+" Ordering is important! For example, setting the background when a
+" colorscheme is already set triggers a redundant reload of the colorscheme.
+" See: :help 'background'
+runtime pagerOptions.vim
+runtime pagerSyntax.vim

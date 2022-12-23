@@ -40,6 +40,7 @@ in
     ./i3status-rust
     ./info
     ./mutt
+    ./neovim
     ./readline
     ./systemd
     ./taskwarrior

@@ -1,0 +1,35 @@
+From 74971149d85f038e96bc552bc748271e7d82c2c3 Mon Sep 17 00:00:00 2001
+From: Benjamin Edward Webb <benjaminedwardwebb@gmail.com>
+Date: Fri, 16 Dec 2022 11:50:28 -0500
+Subject: [PATCH] swap terminal color code 0 and 8
+
+My terminal uses color code 0 as the background and color code 8 as the
+emphasized or highlighted background
+---
+ colors/solarized.vim | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/colors/solarized.vim b/colors/solarized.vim
+index 70f5223..e67b205 100644
+--- a/colors/solarized.vim
++++ b/colors/solarized.vim
+@@ -282,8 +282,14 @@ elseif (has("gui_running") && g:solarized_degrade == 1)
+     let s:green       = "#5f8700"
+ elseif g:solarized_termcolors != 256 && &t_Co >= 16
+     let s:vmode       = "cterm"
+-    let s:base03      = "8"
+-    let s:base02      = "0"
++
++    " The following two lines are customized for my terminal.
++    " The background color (base03 or base3) in my terminal is set as 0.
++    " The emphasized background color (base02 or base2) is set as 8.
++    " This swaps the settings normally used upstream.
++    let s:base03      = "0"
++    let s:base02      = "8"
++
+     let s:base01      = "10"
+     let s:base00      = "11"
+     let s:base0       = "12"
+-- 
+2.38.1
+

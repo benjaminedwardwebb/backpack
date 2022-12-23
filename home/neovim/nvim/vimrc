@@ -1,0 +1,11 @@
+" vimrc
+" My vimrc: simply loads additional vim scripts.
+runtime options.vim
+runtime variables.vim
+runtime syntax.vim
+runtime mapping.vim
+runtime autoload/focus.vim
+
+if has("nvim")
+	runtime neovim.lua
+endif
