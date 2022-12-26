@@ -33,6 +33,7 @@
     firefox
     gimp
     mutt
+    newsboat
     pavucontrol
     shotgun
     taskwarrior

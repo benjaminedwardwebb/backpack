@@ -7,14 +7,14 @@ exec --no-startup-id feh --bg-scale ~/.config/i3/cubes-solarized-dark.png
 
 assign [class="music"] workspace $music
 assign [class="news"] workspace $news
-assign [class="email"] workspace $email
-assign [class="Slack"] workspace $chat
+assign [class="mail"] workspace $mail
+assign [class="chat"] workspace $chat
 assign [class="firefox"] workspace $browser
 assign [class="initial-terminal"] workspace $terminal
 exec music
 exec news
-exec email
-exec slack
+exec mail
+exec chat
 exec firefox
 exec "wezterm start --class 'initial-terminal'"
 

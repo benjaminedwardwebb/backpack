@@ -31,6 +31,7 @@ in
     ./packages.nix
 
     ./bash
+    ./bin
     ./dircolors
     ./direnv
     ./firefox

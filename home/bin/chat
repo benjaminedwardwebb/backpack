@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Starts a wezterm terminal running weechat inside of tmux.
+#
+# This executable wraps my chat client so that it can be invoked with dmenu.
+#
+# Setting the X11 window's class name let's my i3 configuration assign the new
+# terminal window to the right workspace. The program runs wrapped in a new
+# tmux session, which is then wrapped in a non-interactive invocation of bash
+# that will exit once the tmux session ends.
+wezterm start \
+	--always-new-process \
+	--class="chat" \
+	bash -c -- \
+	"tmux \
+		new-session 'weechat' \; \
+		rename-window chat"

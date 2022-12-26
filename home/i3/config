@@ -59,7 +59,7 @@ bindsym $mod+shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # match exactly.
 set $music "1:  "
 set $news "2:  "
-set $email "3:  "
+set $mail "3:  "
 set $chat "4:  "
 set $browser "5:  "
 set $terminal "6:  "

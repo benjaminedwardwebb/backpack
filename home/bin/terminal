@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Starts a wezterm terminal instance.
+wezterm start

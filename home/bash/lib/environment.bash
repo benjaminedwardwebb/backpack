@@ -1,14 +1,12 @@
 # environment.bash
 # Sets global bash environment variables.
-# TODO bash: What other fundamental environment variables should we set here? We probably want to prefer the defaults in most cases. See: https://unix.stackexchange.com/a/76356/523086
+# See: https://unix.stackexchange.com/a/76356/523086
 
 # Export environment variables for preferred applications.
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export BROWSER="firefox"
-# TODO Using `page` here caused problems with `man` because it's started in a
-# separate shell with `/bin/sh` (I think). We could expose the `page` function
-# as an executable maybe to get around this.
+# TODO bash: Use page, the neovim-based pager written in rust, as PAGER once a version without the man pager bug is available in nixpkgs. See: https://github.com/I60R/page/issues/37
 export PAGER="vimpager"
 
 # Export environment variables for important directories.
@@ -22,4 +20,10 @@ export BEW="$CODE/benjaminedwardwebb"
 export DIRENV_LOG_FORMAT=""
 
 # Export PATH environment variable.
-export PATH="$PATH:$LOCAL_BIN"
+add-to-path() {
+	local -r directory="$1"
+	if [ -d "${directory}" ] && [[ ":$PATH:" != *":${directory}:"* ]]; then
+		PATH="${PATH:+"$PATH:"}$directory"
+	fi
+}
+add-to-path "$LOCAL_BIN"

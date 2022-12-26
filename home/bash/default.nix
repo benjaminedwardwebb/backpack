@@ -10,11 +10,18 @@ let
       string = functions.concatenateFiles bashFiles;
     in
     string;
+  concatenateBashDirectoriesRecursively = directories:
+    let
+      strings = map concatenateBashFilesRecursively directories;
+      string = builtins.concatStringsSep "\n" strings;
+    in
+    string;
 in
 {
   programs.bash.enable = true;
 
-  # Initialization for all bash shells, including both interactive and login.
+  # Initialization for interactive and non-interactive bash shells, but not
+  # the login shell.
   programs.bash.bashrcExtra =
     concatenateBashFilesRecursively ./lib;
 
@@ -24,5 +31,8 @@ in
 
   # Initialization for login shells.
   programs.bash.profileExtra =
-    concatenateBashFilesRecursively ./login;
+    concatenateBashDirectoriesRecursively [
+      ./lib
+      ./login
+    ];
 }
