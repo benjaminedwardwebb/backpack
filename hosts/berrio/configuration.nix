@@ -40,6 +40,7 @@
   networking.networkmanager.enable = true;
   time.timeZone = "America/New_York";
 
+  # TODO options snd-hda-intel enable=0,1,0
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
@@ -48,6 +49,8 @@
 
   environment.systemPackages = with pkgs; [
     git
+    man-pages
+    man-pages-posix
     vim
     wget
   ];
@@ -78,4 +81,13 @@
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.benjaminedwardwebb = import ../../home/home.nix;
+
+  services.cron.enable = true;
+  services.cron.systemCronJobs = [
+    "0 10 * * 1-5 root /run/current-system/sw/bin/poweroff"
+    "0 23 * * 1-5 root /run/current-system/sw/bin/poweroff"
+  ];
+
+  documentation.dev.enable = true;
+  documentation.man.generateCaches = true;
 }
