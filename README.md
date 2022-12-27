@@ -23,7 +23,6 @@ tree --noreport -L 1
 .
 ├── bootstrap           bootstrap executable (to setup new hosts)
 ├── configuration.nix   facade configuration.nix that loads those in hosts/
-├── docs                repository documentation
 ├── home                Home Manager configuration for the user environment
 ├── hosts               NixOS configurations for host system environments
 ├── lib                 library of re-usable nix code
