@@ -28,6 +28,7 @@
 
     # applications
     bluez
+    brightnessctl
     browserpass
     es
     firefox
@@ -57,6 +58,7 @@
     git
     glab
     glow
+    htmlq
     httpie
     inotify-tools
     jq
